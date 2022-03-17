@@ -1,6 +1,9 @@
 package com.example.se2_project.model;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Product {
@@ -8,9 +11,18 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
+
+    @NotEmpty(message = "Product name cannot be empty")
+    @Length(min = 3, max = 30)
     private String name;
+
+    @NotEmpty(message = "Price cannot be empty")
     private Long price;
+
+    @NotEmpty(message = "Image cannot be empty")
     private String imageName;
+
+    @Length(min = 3, max = 400)
     private String description;
     private Long categoryId;
 

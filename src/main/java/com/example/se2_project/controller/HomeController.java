@@ -1,2 +1,7 @@
-package com.example.se2_project.controller;public class HomeController {
+package com.example.se2_project.controller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HomeController {
 }
