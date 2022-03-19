@@ -21,7 +21,7 @@ public class CategoryController {
     }
 
 
-    // Make changes here too if needed
+    // Make changes everywhere else as well if needed
     // "GET" category by Id
     @GetMapping(value = "/categories/{id}")
     public Category getCategoryById(
