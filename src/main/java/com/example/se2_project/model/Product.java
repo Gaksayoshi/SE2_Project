@@ -10,7 +10,7 @@ public class Product {
     private Long id;
     private String name;
     private Long price;
-    private String imageName;
+    private String imageUrl;
     private String description;
     private Long categoryId;
 
@@ -30,12 +30,12 @@ public class Product {
         this.price = price;
     }
 
-    public String getImageName() {
-        return imageName;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setImageName(String imageName) {
-        this.imageName = imageName;
+    public void getImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getDescription() {
