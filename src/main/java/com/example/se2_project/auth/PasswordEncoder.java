@@ -1,14 +1,11 @@
-package com.example.se2_project;
+package com.example.se2_project.auth;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-public class PasswordEncryptor {
-
-    public static void main(String[] args) {
+public class PasswordEncoder {
+    public static String encodePassword(String rawPassword) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        String rawPassword = "matkhau";
         String encodedPassword = encoder.encode(rawPassword);
-
-        System.out.printf(encodedPassword);
+        return encodedPassword;
     }
 }
