@@ -7,8 +7,8 @@ public class PasswordEncryptor {
     public static void main(String[] args) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String rawPassword = "matkhau";
-        String encodedPAssword = encoder.encode(rawPassword);
+        String encodedPassword = encoder.encode(rawPassword);
 
-        System.out.printf(encodedPAssword);
+        System.out.printf(encodedPassword);
     }
 }
