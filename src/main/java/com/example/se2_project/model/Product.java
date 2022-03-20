@@ -22,9 +22,12 @@ public class Product {
     @NotEmpty(message = "Image cannot be empty")
     private String imageName;
 
+
     @Length(min = 3, max = 400)
     private String description;
-    private Long categoryId;
+
+    @ManyToOne
+    private Category category;
 
     public String getName() {
         return name;
@@ -56,14 +59,6 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Long getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(Long categoryId) {
-        this.categoryId = categoryId;
     }
 
     public Long getId() {

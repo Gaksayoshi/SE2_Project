@@ -4,9 +4,10 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.sql.Date;
 
 @Entity
-public class Category {
+public class Voucher  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -15,6 +16,22 @@ public class Category {
     @NotEmpty(message = "This field is mandatory")
     @Length(max = 30)
     private String name;
+
+    @NotEmpty(message = "This field is mandatory")
+    @Length(max = 20)
+    private String code;
+
+    @NotEmpty(message = "This field is mandatory")
+    private Date DateStart;
+
+    @NotEmpty(message = "This field is mandatory")
+    private Date DateEnd;
+
+    @NotEmpty(message = "This field is mandatory")
+    private Double discount;
+
+    @OneToOne
+    private Order order;
 
     public Long getId() {
         return id;

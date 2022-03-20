@@ -1,6 +1,9 @@
 package com.example.se2_project.model;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class User {
@@ -8,11 +11,26 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
+
+    @NotEmpty(message = "This field is mandatory")
+    @Length(min = 3, max = 30)
     private String name;
+
+    @NotEmpty(message = "This field is mandatory")
     private String email;
+
+    @NotEmpty(message = "This field is mandatory")
     private int phone;
+
+    @NotEmpty(message = "This field is mandatory")
     private String address;
+
+    @NotEmpty(message = "This field is mandatory")
+    @Length(max = 30)
     private String userName;
+
+    @Length(min = 8, max = 30)
+    @NotEmpty(message = "This field is mandatory")
     private String password;
 
     public String getName() {
