@@ -7,6 +7,7 @@ import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Product {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -28,6 +29,18 @@ public class Product {
 
     @ManyToOne
     private Category category;
+
+    public Product(String name, Long price, String imageName, String description, Category category) {
+        this.name = name;
+        this.price = price;
+        this.imageName = imageName;
+        this.description = description;
+        this.category = category;
+    }
+
+    public Product() {
+
+    }
 
     public String getName() {
         return name;
