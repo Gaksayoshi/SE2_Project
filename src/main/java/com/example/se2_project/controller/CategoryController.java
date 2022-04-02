@@ -30,13 +30,13 @@ public class CategoryController {
         return category;
     }
 
-    @PostMapping(value = "/categories")
+    @PostMapping(value = "/categories/add")
     public Category addCategory(
             @RequestBody Category category) {
         return categoryRepo.save(category);
     }
 
-    @PutMapping(value = "/categories/{id}")
+    @PutMapping(value = "/categories/add/{id}")
     public void updateCategory(
             @PathVariable(value = "id") Long id,
             @RequestBody Category category) {
@@ -46,7 +46,7 @@ public class CategoryController {
         }
     }
 
-    @DeleteMapping(value = "/categories/{id}")
+    @DeleteMapping(value = "/categories/delete/{id}")
     public void deleteCategory(
             @PathVariable(value = "id") Long id) {
         if (categoryRepo.existsById(id)) {

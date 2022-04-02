@@ -28,14 +28,14 @@ public class ProductController {
     }
 
     // "POST" - create a new product
-    @PostMapping(value = "/products")
+    @PostMapping(value = "/products/add")
     public Product addProduct(
             @RequestBody Product product) {
         return productRepo.save(product);
     }
 
     // "PUT" - update a product
-    @PutMapping(value = "/products/{id}")
+    @PutMapping(value = "/products/add/{id}")
     public void updateProduct(
             @PathVariable(value = "id") Long id,
             @RequestBody Product product) {
@@ -46,7 +46,7 @@ public class ProductController {
     }
 
     // "DELETE" - delete a product
-    @DeleteMapping(value="/products/{id}")
+    @DeleteMapping(value="/products/delete/{id}")
     public void deleteProduct(
             @PathVariable(value = "id") Long id) {
         if (productRepo.existsById(id)) {

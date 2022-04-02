@@ -12,24 +12,17 @@ import static com.example.se2_project.auth.PasswordEncoder.encodePassword;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    private UserRepo userRepo;
+    private UserRepo userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // hard-coded admin account for testing, in real situation this should be created in database
-        User uAdmin = new User();
-        uAdmin.setId(1L);
-        uAdmin.setUsername("admin");
-        uAdmin.setPassword(encodePassword("matkhau"));
-        uAdmin.setRole("ROLE_ADMIN");
-        uAdmin.setEnabled(true);
+    public UserDetails loadUserByUsername(String username)
+            throws UsernameNotFoundException {
+        User user = userRepository.getUserByUsername(username);
 
-//        User user = userRepo.getUserByUsername(username);
-//        if (user == null) {
-//            throw new UsernameNotFoundException("Could not find user");
-//        }
-//        return new MyUserDetails(user);
+        if (user == null) {
+            throw new UsernameNotFoundException("Could not find user");
+        }
 
-        return new MyUserDetails(uAdmin);
+        return new MyUserDetails(user);
     }
 }

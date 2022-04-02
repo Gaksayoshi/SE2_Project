@@ -39,10 +39,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+                .antMatchers("/").hasAnyAuthority("USER", "ADMIN")
+                .mvcMatchers("/cpanel").hasAnyAuthority("ADMIN")
+                .antMatchers("/categories/add/*").hasAnyAuthority("ADMIN")
+                .antMatchers("/categories/delete/*").hasAnyAuthority("ADMIN")
+                .antMatchers("/products/add/*").hasAnyAuthority("ADMIN")
+                .antMatchers("/products/delete/*").hasAnyAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().permitAll()
                 .and()
-                .logout().permitAll();
+                .logout().permitAll()
+                .and()
+                .exceptionHandling().accessDeniedPage("/403");
     }
 }
