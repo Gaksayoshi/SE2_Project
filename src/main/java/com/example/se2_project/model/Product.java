@@ -1,18 +1,46 @@
 package com.example.se2_project.model;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Product {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
+
+    @NotEmpty(message = "Product name cannot be empty")
+    @Length(min = 3, max = 30)
     private String name;
+
+    @NotEmpty(message = "Price cannot be empty")
     private Long price;
+
+    @NotEmpty(message = "Image cannot be empty")
     private String imageName;
+
+
+    @Length(min = 3, max = 400)
     private String description;
-    private Long categoryId;
+
+    @ManyToOne
+    private Category category;
+
+    public Product(String name, Long price, String imageName, String description, Category category) {
+        this.name = name;
+        this.price = price;
+        this.imageName = imageName;
+        this.description = description;
+        this.category = category;
+    }
+
+    public Product() {
+
+    }
 
     public String getName() {
         return name;
@@ -44,14 +72,6 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Long getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(Long categoryId) {
-        this.categoryId = categoryId;
     }
 
     public Long getId() {

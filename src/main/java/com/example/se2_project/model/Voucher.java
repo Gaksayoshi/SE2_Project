@@ -1,61 +1,37 @@
 package com.example.se2_project.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import org.hibernate.validator.constraints.Length;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.sql.Date;
 
 @Entity
-public class Voucher {
+public class Voucher  {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
+
+    @NotEmpty(message = "This field is mandatory")
+    @Length(max = 30)
     private String name;
+
+    @NotEmpty(message = "This field is mandatory")
+    @Length(max = 20)
     private String code;
-    private Date dateStart;
 
-    public String getName() {
-        return name;
-    }
+    @NotEmpty(message = "This field is mandatory")
+    private Date DateStart;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    @NotEmpty(message = "This field is mandatory")
+    private Date DateEnd;
 
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public Date getDateStart() {
-        return dateStart;
-    }
-
-    public void setDateStart(Date dateStart) {
-        this.dateStart = dateStart;
-    }
-
-    public Date getDateEnd() {
-        return dateEnd;
-    }
-
-    public void setDateEnd(Date dateEnd) {
-        this.dateEnd = dateEnd;
-    }
-
-    public Double getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(Double discount) {
-        this.discount = discount;
-    }
-
-    private Date dateEnd;
+    @NotEmpty(message = "This field is mandatory")
     private Double discount;
+
+    @OneToOne
+    private Orders order;
 
     public Long getId() {
         return id;

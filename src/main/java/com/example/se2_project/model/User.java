@@ -1,6 +1,9 @@
 package com.example.se2_project.model;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class User {
@@ -8,51 +11,31 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-    private String name;
-    private String email;
-    private int phone;
-    private String address;
-    private String userName;
+
+    @NotEmpty(message = "This field is mandatory")
+    @Length(max = 30)
+    private String username;
+
+    @Length(min = 8, max = 30)
+    @NotEmpty(message = "This field is mandatory")
     private String password;
+    private String role;
+    private boolean enabled;
 
-    public String getName() {
-        return name;
+    public Long getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getPhone() {
-        return phone;
-    }
-
-    public void setPhone(int phone) {
-        this.phone = phone;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -63,11 +46,19 @@ public class User {
         this.password = password;
     }
 
-    public Long getId() {
-        return id;
+    public String getRole() {
+        return role;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }
