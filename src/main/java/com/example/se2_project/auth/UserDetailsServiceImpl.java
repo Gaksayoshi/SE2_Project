@@ -1,7 +1,7 @@
 package com.example.se2_project.auth;
 
 import com.example.se2_project.model.User;
-import com.example.se2_project.repository.UserRepo;
+import com.example.se2_project.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,7 +12,7 @@ import static com.example.se2_project.auth.PasswordEncoder.encodePassword;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    private UserRepo userRepository;
+    private UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username)
